@@ -38,7 +38,7 @@ for image_path in tqdm(image_paths):
 
     scaled_height = int(image.height * scale)
     scaled_width = int(image.width * scale)
-xg
+
     image = image.resize(
         (scaled_width, scaled_height),
         Image.Resampling.LANCZOS,
