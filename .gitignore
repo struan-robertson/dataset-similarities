@@ -1,2 +1,4 @@
 /dataset_similarities.egg-info/
 /__pycache__/
+/.ob-jupyter/
+*.npy
