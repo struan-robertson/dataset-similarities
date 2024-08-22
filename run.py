@@ -52,6 +52,8 @@ for image_path in tqdm(image_paths):
 
 similarity_array = compare(config, feature_maps)
 
+np.save("sims.npy", similarity_array)
+
 # Load all images into shared array
 # I need a 2D array for storing similarities
 # The index of feature_maps, image_paths and 2D similarity array will correspond
