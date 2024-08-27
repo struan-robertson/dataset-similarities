@@ -8,15 +8,14 @@ dependencies = [
     "pillow",
     "scikit-learn",
     "tqdm",
-    "torchvision==0.14.1+cpu",
-    "torch==1.13.1+cpu",
+    "torchvision==0.14.1+rocm5.2",
+    "torch==1.13.1+rocm5.2",
     "numpy<2",
     "opencv-python",
     "more-itertools",
     "types-tqdm",
     "torchinfo",
     "toml",
-    "networkx>=3.2.1",
     "matplotlib>=3.9.2",
 ]
 
@@ -56,11 +55,10 @@ convention = "google"
 dev-dependencies = [
     "ipython",
     "ipykernel",
-    "matplotlib",
     "basedpyright",
 ]
 python-preference = "only-managed"
-extra-index-url = ["https://download.pytorch.org/whl/cpu"]
+extra-index-url = ["https://download.pytorch.org/whl/rocm5.2"]
 
 [tool.setuptools]
 py-modules = []

@@ -48,7 +48,7 @@ wheels = [
 [[package]]
 name = "certifi"
 version = "2022.12.7"
-source = { registry = "https://download.pytorch.org/whl/cpu" }
+source = { registry = "https://download.pytorch.org/whl/rocm5.2" }
 wheels = [
     { url = "https://download.pytorch.org/whl/certifi-2022.12.7-py3-none-any.whl", hash = "sha256:4ad3232f5e926d6718ec31cfc1fcadfde020920e278684144551c91769c7bc18" },
 ]
@@ -113,7 +113,7 @@ wheels = [
 [[package]]
 name = "charset-normalizer"
 version = "2.1.1"
-source = { registry = "https://download.pytorch.org/whl/cpu" }
+source = { registry = "https://download.pytorch.org/whl/rocm5.2" }
 wheels = [
     { url = "https://download.pytorch.org/whl/charset_normalizer-2.1.1-py3-none-any.whl", hash = "sha256:83e9a75d1911279afd89352c68b45348559d1fc0506b054b346651b5e7fee29f" },
 ]
@@ -121,7 +121,7 @@ wheels = [
 [[package]]
 name = "colorama"
 version = "0.4.6"
-source = { registry = "https://download.pytorch.org/whl/cpu" }
+source = { registry = "https://download.pytorch.org/whl/rocm5.2" }
 wheels = [
     { url = "https://download.pytorch.org/whl/colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6" },
 ]
@@ -195,7 +195,6 @@ source = { editable = "." }
 dependencies = [
     { name = "matplotlib" },
     { name = "more-itertools" },
-    { name = "networkx" },
     { name = "numpy" },
     { name = "opencv-python" },
     { name = "pillow" },
@@ -213,22 +212,20 @@ dev = [
     { name = "basedpyright" },
     { name = "ipykernel" },
     { name = "ipython" },
-    { name = "matplotlib" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "matplotlib", specifier = ">=3.9.2" },
     { name = "more-itertools" },
-    { name = "networkx", specifier = ">=3.2.1" },
     { name = "numpy", specifier = "<2" },
     { name = "opencv-python" },
     { name = "pillow" },
     { name = "scikit-learn" },
     { name = "toml" },
-    { name = "torch", specifier = "==1.13.1+cpu" },
+    { name = "torch", specifier = "==1.13.1+rocm5.2" },
     { name = "torchinfo" },
-    { name = "torchvision", specifier = "==0.14.1+cpu" },
+    { name = "torchvision", specifier = "==0.14.1+rocm5.2" },
     { name = "tqdm" },
     { name = "types-tqdm" },
 ]
@@ -238,7 +235,6 @@ dev = [
     { name = "basedpyright" },
     { name = "ipykernel" },
     { name = "ipython" },
-    { name = "matplotlib" },
 ]
 
 [[package]]
@@ -325,7 +321,7 @@ wheels = [
 [[package]]
 name = "idna"
 version = "3.4"
-source = { registry = "https://download.pytorch.org/whl/cpu" }
+source = { registry = "https://download.pytorch.org/whl/rocm5.2" }
 wheels = [
     { url = "https://download.pytorch.org/whl/idna-3.4-py3-none-any.whl", hash = "sha256:90b77e79eaa3eba6de819a0c442c0b4ceefc341a7a2ab77d7562bf49f425c5c2" },
 ]
@@ -559,14 +555,6 @@ wheels = [
 ]
 
 [[package]]
-name = "networkx"
-version = "3.2.1"
-source = { registry = "https://download.pytorch.org/whl/cpu" }
-wheels = [
-    { url = "https://download.pytorch.org/whl/networkx-3.2.1-py3-none-any.whl", hash = "sha256:f18c69adc97877c42332c170849c96cefa91881c99a7cb3e95b7c659ebdc1ec2" },
-]
-
-[[package]]
 name = "nodejs-wheel-binaries"
 version = "20.16.0"
 source = { registry = "https://pypi.org/simple" }
@@ -583,7 +571,7 @@ wheels = [
 [[package]]
 name = "numpy"
 version = "1.26.3"
-source = { registry = "https://download.pytorch.org/whl/cpu" }
+source = { registry = "https://download.pytorch.org/whl/rocm5.2" }
 wheels = [
     { url = "https://download.pytorch.org/whl/numpy-1.26.3-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:806dd64230dbbfaca8a27faa64e2f414bf1c6622ab78cc4264f7f5f028fee3bf" },
     { url = "https://download.pytorch.org/whl/numpy-1.26.3-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:02f98011ba4ab17f46f80f7f8f1c291ee7d855fcef0a5a98db80767a468c85cd" },
@@ -622,7 +610,7 @@ wheels = [
 [[package]]
 name = "packaging"
 version = "22.0"
-source = { registry = "https://download.pytorch.org/whl/cpu" }
+source = { registry = "https://download.pytorch.org/whl/rocm5.2" }
 wheels = [
     { url = "https://download.pytorch.org/whl/packaging-22.0-py3-none-any.whl", hash = "sha256:957e2148ba0e1a3b282772e791ef1d8083648bc131c8ab0c1feba110ce1146c3" },
 ]
@@ -651,7 +639,7 @@ wheels = [
 [[package]]
 name = "pillow"
 version = "10.2.0"
-source = { registry = "https://download.pytorch.org/whl/cpu" }
+source = { registry = "https://download.pytorch.org/whl/rocm5.2" }
 wheels = [
     { url = "https://download.pytorch.org/whl/pillow-10.2.0-cp310-cp310-macosx_10_10_x86_64.whl", hash = "sha256:7823bdd049099efa16e4246bdf15e5a13dbb18a51b68fa06d6c1d4d8b99a796e" },
     { url = "https://download.pytorch.org/whl/pillow-10.2.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:83b2021f2ade7d1ed556bc50a399127d7fb245e725aa0113ebd05cfe88aaf588" },
@@ -865,7 +853,7 @@ wheels = [
 [[package]]
 name = "requests"
 version = "2.28.1"
-source = { registry = "https://download.pytorch.org/whl/cpu" }
+source = { registry = "https://download.pytorch.org/whl/rocm5.2" }
 dependencies = [
     { name = "certifi" },
     { name = "charset-normalizer" },
@@ -983,15 +971,13 @@ wheels = [
 
 [[package]]
 name = "torch"
-version = "1.13.1+cpu"
-source = { registry = "https://download.pytorch.org/whl/cpu" }
+version = "1.13.1+rocm5.2"
+source = { registry = "https://download.pytorch.org/whl/rocm5.2" }
 dependencies = [
     { name = "typing-extensions" },
 ]
 wheels = [
-    { url = "https://download.pytorch.org/whl/cpu/torch-1.13.1%2Bcpu-cp310-cp310-linux_x86_64.whl", hash = "sha256:11692523b87c45b79ddfb5148b12a713d85235d399915490d94e079521f7e014" },
-    { url = "https://download.pytorch.org/whl/cpu/torch-1.13.1%2Bcpu-cp310-cp310-win_amd64.whl", hash = "sha256:207ab3700cd9c4349f4fd1892597eb3d385eb78221c0f2974ec54b8ea903aa00" },
-    { url = "https://download.pytorch.org/whl/cpu/torch-1.13.1%2Bcpu-cp311-cp311-linux_x86_64.whl", hash = "sha256:dc185f2fdbb1f84855929d3ba7b36c74f218789d26a0e0268cb0586d466c8c24" },
+    { url = "https://download.pytorch.org/whl/rocm5.2/torch-1.13.1%2Brocm5.2-cp310-cp310-linux_x86_64.whl", hash = "sha256:f3685d08ac0d8c951cc367f9bd4b2c924c5d4517669c476807748abcd966136f" },
 ]
 
 [[package]]
@@ -1005,8 +991,8 @@ wheels = [
 
 [[package]]
 name = "torchvision"
-version = "0.14.1+cpu"
-source = { registry = "https://download.pytorch.org/whl/cpu" }
+version = "0.14.1+rocm5.2"
+source = { registry = "https://download.pytorch.org/whl/rocm5.2" }
 dependencies = [
     { name = "numpy" },
     { name = "pillow" },
@@ -1015,8 +1001,7 @@ dependencies = [
     { name = "typing-extensions" },
 ]
 wheels = [
-    { url = "https://download.pytorch.org/whl/cpu/torchvision-0.14.1%2Bcpu-cp310-cp310-linux_x86_64.whl", hash = "sha256:a49c36369b48720304cda4085bba4a05b42ff295400feae89e0ee8683051f923" },
-    { url = "https://download.pytorch.org/whl/cpu/torchvision-0.14.1%2Bcpu-cp310-cp310-win_amd64.whl", hash = "sha256:9191ce52974a6be4f2f75a23d9c96371ac3025448dfd48ee0d2a553316944c4c" },
+    { url = "https://download.pytorch.org/whl/rocm5.2/torchvision-0.14.1%2Brocm5.2-cp310-cp310-linux_x86_64.whl", hash = "sha256:a01606fcaedb824c6ed14be6c92d94d6e7762e4150fc26ab731a4427dc733184" },
 ]
 
 [[package]]
@@ -1040,7 +1025,7 @@ wheels = [
 [[package]]
 name = "tqdm"
 version = "4.64.1"
-source = { registry = "https://download.pytorch.org/whl/cpu" }
+source = { registry = "https://download.pytorch.org/whl/rocm5.2" }
 dependencies = [
     { name = "colorama", marker = "platform_system == 'Windows'" },
 ]
@@ -1069,7 +1054,7 @@ wheels = [
 [[package]]
 name = "typing-extensions"
 version = "4.9.0"
-source = { registry = "https://download.pytorch.org/whl/cpu" }
+source = { registry = "https://download.pytorch.org/whl/rocm5.2" }
 wheels = [
     { url = "https://download.pytorch.org/whl/typing_extensions-4.9.0-py3-none-any.whl", hash = "sha256:af72aea155e91adfc61c3ae9e0e342dbc0cba726d6cba4b6c72c1f34e47291cd" },
 ]
@@ -1077,7 +1062,7 @@ wheels = [
 [[package]]
 name = "urllib3"
 version = "1.26.13"
-source = { registry = "https://download.pytorch.org/whl/cpu" }
+source = { registry = "https://download.pytorch.org/whl/rocm5.2" }
 wheels = [
     { url = "https://download.pytorch.org/whl/urllib3-1.26.13-py2.py3-none-any.whl", hash = "sha256:47cc05d99aaa09c9e72ed5809b60e7ba354e64b59c9c173ac3018642d8bb41fc" },
 ]
