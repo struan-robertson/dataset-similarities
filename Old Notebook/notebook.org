@@ -1,0 +1,191 @@
+#+title: Dataset Similarities
+#+property: header-args :session dataset-sims :kernel dataset-sims :async yes
+
+* Imports
+
+#+begin_src jupyter-python
+  import numpy as np
+  from sklearn.manifold import TSNE
+  from sklearn.cluster import KMeans, DBSCAN, AgglomerativeClustering
+  from sklearn.mixture import GaussianMixture
+  import matplotlib.pyplot as plt
+  from pathlib import Path
+  import shutil
+  from mpl_toolkits.mplot3d import Axes3D
+  from enum import Enum, auto
+#+end_src
+
+#+RESULTS:
+
+* Load data
+
+#+begin_src jupyter-python
+  sim_matrix = np.load('sims.npy')
+
+  class Labels(Enum):
+      TWOD_FOOTWEAR = auto()
+      DUNDEE = auto()
+      FID_300 = auto()
+      IMPRESS = auto()
+      SHOERINSICS = auto()
+      WVU2019 = auto()
+
+  # Load labels
+  dataset_dir = Path("../shoeprint-image-retrieval/datasets/Data/Shoeprint Collective/")
+
+  labels = np.zeros(sim_matrix.shape[0], np.int_)
+
+  i = 0
+  for image_path in dataset_dir.rglob("*"):
+      if image_path.is_file():
+          image_path = str(image_path)
+          if "2D Footwear Outsole Impressions" in image_path:
+              labels[i] = Labels.TWOD_FOOTWEAR.value
+          elif "Dundee" in image_path:
+              labels[i] = Labels.DUNDEE.value
+          elif "FID-300" in image_path:
+              labels[i] = Labels.FID_300.value
+          elif "Impress" in image_path:
+              labels[i] = Labels.IMPRESS.value
+          elif "ShoeRinsics" in image_path:
+              labels[i] = Labels.SHOERINSICS.value
+          elif "WVU2019" in image_path:
+              labels[i] = Labels.WVU2019.value
+
+          i += 1
+
+#+end_src
+
+#+RESULTS:
+
+* Histogram
+
+#+begin_src jupyter-python
+  # Flatten the matrix and remove self-similarities (diagonal elements)
+  similarities = sim_matrix[~np.eye(sim_matrix.shape[0], dtype=bool)].flatten()
+
+  # Create the histogram
+  plt.figure(figsize=(10, 6))
+  plt.hist(similarities, bins=50, edgecolor='black')
+  plt.title('Histogram of Image Similarities')
+  plt.xlabel('Sim')
+  plt.ylabel('Frequency')
+
+  # Add vertical line for mean
+  mean_sim = np.mean(similarities)
+  plt.axvline(mean_sim, color='r', linestyle='dashed', linewidth=2, label=f'Mean: {mean_sim:.3f}')
+ 
+  # Add vertical line for median
+  median_sim = np.median(similarities)
+  plt.axvline(median_sim, color='g', linestyle='dashed', linewidth=2, label=f'Median: {median_sim:.3f}')
+
+  plt.legend()
+  plt.tight_layout()
+  plt.show()
+#+end_src
+
+#+RESULTS:
+[[file:./.ob-jupyter/cbbb0713dd4e530dca607faf77f4a3ac833d27e7.png]]
+
+* Graph
+
+#+begin_src jupyter-python
+  # Maybe use datasets for initialising
+  # tsne = TSNE(n_components=2, perplexity=10, random_state=6969, early_exaggeration=36)
+  tsne = TSNE(n_components=2, random_state=750)
+  embedded = tsne.fit_transform(sim_matrix)
+
+#+end_src
+
+#+RESULTS:
+
+* Plot
+
+** Plot 2D
+
+#+begin_src jupyter-python
+  num_images = len(sim_matrix)
+
+  # Create a color map
+  cmap = plt.colormaps['tab10']
+
+  names = ["2D Foot", "Dundee", "FID-300", "Impress", "ShoeRinsics", "WVU2019"]
+
+  fig, ax = plt.subplots(figsize=(10,10))
+  for i, label in enumerate(Labels):
+      if label == Labels.WVU2019:
+          continue
+
+      mask = labels == label.value
+
+      ax.scatter(embedded[mask,0], embedded[mask,1], s=5, c=[cmap(i) if label != Labels.SHOERINSICS else cmap(5)], label=names[i])
+
+  ax.legend()
+
+  ax.set_xlabel("t-SNE Dimension 1")
+  ax.set_ylabel("t-SNE Dimension 2")
+
+  ax.set_title("Shoeprint Dataset Similarities")
+
+  plt.show()
+
+#+end_src
+
+#+RESULTS:
+[[file:./.ob-jupyter/46c1a04131fbdc6998dd53480003390ece13bfdc.png]]
+
+* Cluster Selection
+
+** KMeans
+
+#+begin_src jupyter-python
+  initial_centroids = np.array([[-80,25], [-40,-25], [25,-30], [0,25], [0,75]])
+  kmeans = KMeans(n_clusters=5, random_state=750)
+  clusters = kmeans.fit_predict(embedded)
+#+end_src
+
+#+RESULTS:
+
+** Hierarchical
+
+#+begin_src jupyter-python
+  hierarchical = AgglomerativeClustering(n_clusters=5)
+  clusters = hierarchical.fit_predict(embedded)
+#+end_src
+
+#+RESULTS:
+
+** Gaussian Mixture Model
+
+#+begin_src jupyter-python
+  gmm = GaussianMixture(n_components=5)
+  clusters = gmm.fit_predict(embedded)
+#+end_src
+
+#+RESULTS:
+
+** DBSCAN
+
+#+begin_src jupyter-python
+  dbscan = DBSCAN(eps=0.5, min_samples=5)
+  clusters = dbscan.fit_predict(embedded)
+#+end_src
+
+#+RESULTS:
+
+* Plot Clusters
+
+#+begin_src jupyter-python
+  plt.scatter(embedded[:,0], embedded[:,1], c=clusters)
+  plt.show()
+#+end_src
+
+#+RESULTS:
+[[file:./.ob-jupyter/7a98d8bf674b7fe7595abd6bf5df4def8c752fd0.png]]
+
+* Copy Clusters
+
+#+begin_src jupyter-python
+  for cluster in clusters:
+    if cluster
+#+end_src
